@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>QmlLanguage_en.qm</file>
+        <file>QmlLanguage_ua.qm</file>
+    </qresource>
+</RCC>
