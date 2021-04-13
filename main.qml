@@ -11,21 +11,17 @@ Window {
     //visibility: Window.FullScreen //для малинки
     width: 600 //для пк
     height: 1024 //для пк
-    flags: Qt.FramelessWindowHint
+    flags: Qt.FramelessWindowHint //скрываются кнопки сверху окошка
 
-    //property real buttons_width: 230
-    //property real buttons_height: 240
-    //property real buttons_width: 171
-    //property real buttons_height: 196
-    //property real buttons_width: 157
-    //property real buttons_height: 180
-    //property real buttons_width: 191
-    //property real buttons_height: 219
+    //размеры квадрата под изображение шестиугольника
     property real buttons_width: 191
     property real buttons_height: 210
 
+    //координаты главной области действия клика
     property real mouse_range1_x: 18
     property real mouse_range1_y: 48
+
+    //размеры 5 квадратов области действия клика
     property real mouse_range1_width: 169
     property real mouse_range1_height: 100
     property real mouse_range2_width: 130
@@ -37,26 +33,30 @@ Window {
     property real mouse_range5_width: 50
     property real mouse_range5_height: 17
 
-    property real recBut148X: 161
-    property real recBut26X: 70
-    property real recBut37X: 252
-    property real recBut23Y: 263
-    property real recBut45Y: 415
-    property real recBut67Y: 566
-    property real shiftX: 0
-    property real shiftY: 0
-    property real clearances: 0
 
+    property real recBut148X: 161 //координата по х, вертикальное расположение центральных шестиугольников
+    property real recBut26X: 70 //координата по х, вертикальное расположение левых крайних шестиугольников
+    property real recBut37X: 252 //координата по х, вертикальное расположение правых крайних шестиугольников
+    property real recBut23Y: 263 //координата по у, горизонтальное расположение верхних двух шестиугольников
+    property real recBut45Y: 415 //координата по у, горизонтальное расположение средних двух шестиугольников
+    property real recBut67Y: 566 //координата по у, горизонтальное расположение нижних двух шестиугольников
+    property real shiftX: 0 //сдвиг всего меню по горизонтали
+    property real shiftY: 0 //сдвиг всего меню по вертикали
+    property real clearances: 0 //растояние между шестиугольниками, возможно не работает
+
+    //для вывода времени
     property int hours
     property int minutes
     property int seconds
 
-    property real but_text_size: 15
-    property bool rec_range_color_set: false
+    property real but_text_size: 15 //размер надписей на кнопках
+    property bool rec_range_color_set: false //сделать видимыми все квадраты
 
+    //сдвиг менюшки со второй страницы
     property real shiftXPage2: -60
     property real shiftYPage2: 0
 
+    //берем время
     function timeChanged() {
         var date = new Date();
         hours = date.getHours();
@@ -64,6 +64,7 @@ Window {
         seconds = date.getSeconds();
     }
 
+    //для отображения квадратов
     function rec_range_color(){
         return rec_range_color_set ? "red" : "transparent"
     }
@@ -74,7 +75,6 @@ Window {
         running: true
         onTriggered: timeChanged()
     }
-
 
     StackView {
         id: stack
