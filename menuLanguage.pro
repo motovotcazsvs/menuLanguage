@@ -4,15 +4,13 @@ QT += qml quick
 CONFIG += c++11
 
 SOURCES += main.cpp \
-    languagetranslator.cpp
+    languagetranslator.cpp \
+    bye.cpp
+
 #Для того, чтобы создать файл переводов со строками из ресурсов qml
 #понадобится включить файл qml в качестве обычных исходников в pro файле
 #но только для использования утилиты lupdate, чтобы она могла узнать,
 #какие строки нуждаются в переводе
-lupdate_only {
-    SOURCES += main.qml
-}
-
 lupdate_only {
     SOURCES += main.qml
 }
@@ -31,4 +29,5 @@ TRANSLATIONS += QmlLanguage_en.ts \
                 QmlLanguage_ua.ts
 
 HEADERS += \
-    languagetranslator.h
+    languagetranslator.h \
+    bye.h

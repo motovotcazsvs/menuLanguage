@@ -33,7 +33,6 @@ Window {
     property real mouse_range5_width: 50
     property real mouse_range5_height: 17
 
-
     property real recBut148X: 161 //координата по х, вертикальное расположение центральных шестиугольников
     property real recBut26X: 70 //координата по х, вертикальное расположение левых крайних шестиугольников
     property real recBut37X: 252 //координата по х, вертикальное расположение правых крайних шестиугольников
@@ -65,7 +64,7 @@ Window {
     }
 
     //для отображения квадратов
-    function rec_range_color(){
+    function rec_range_color() {
         return rec_range_color_set ? "red" : "transparent"
     }
 
@@ -1407,13 +1406,23 @@ Window {
                 color: "transparent"
                 border.color: rec_range_color()
 
+                Timer {
+                    id: timerService
+                    interval: 5000
+                    running: false
+                    onTriggered: {
+                        stack.push(viewHiddenServiceMenu);
+                    }
+                }
+
                 MouseArea {
                     id: recB9But1
                     anchors.fill: recB9Rec1
-                    onClicked: {
-                        console.log("Button 9999999 clicked.");
-                        stack.push(viewPage2);
-                        Qt.quit();
+                    onPressed: {
+                        timerService.running = true
+                    }
+                    onReleased: {
+                        timerService.running = false
                     }
                 }
             }
@@ -1432,7 +1441,6 @@ Window {
                     anchors.fill: recB9Rec2
                     onClicked: {
                         console.log("Button 999999 clicked.");
-
                     }
                 }
             }
@@ -1452,7 +1460,6 @@ Window {
                     anchors.fill: recB9Rec3
                     onClicked: {
                         console.log("Button 999999 clicked.");
-
                     }
                 }
             }
@@ -1472,7 +1479,6 @@ Window {
                     anchors.fill: recB9Rec4
                     onClicked: {
                         console.log("Button 999999 clicked.");
-
                     }
                 }
             }
@@ -1492,7 +1498,6 @@ Window {
                     anchors.fill: recB9Rec5
                     onClicked: {
                         console.log("Button 9999999 clicked.");
-
                     }
                 }
             }
@@ -2252,5 +2257,45 @@ Window {
             }
         }
     }
+
+    Page {
+        id: viewHiddenServiceMenu
+        visible: false
+
+        Column {
+            spacing: 50
+
+            Button {
+                text: qsTr("ВЫЙТИ") + langTranslator.emptyString
+                onClicked: {
+                    Qt.quit();
+                }
+            }
+
+            Button {
+                text: qsTr("ВЫКЛЮЧИТЬ") + langTranslator.emptyString
+                onClicked: {
+                    goodbye.funcShotdown();
+                }
+            }
+
+            Button {
+                text: qsTr("ПЕРЕЗАГРУЗИТЬ") + langTranslator.emptyString
+                onClicked: {
+                    goodbye.funcReboot();
+                }
+            }
+
+            Button {
+                text: qsTr("НАЗАД") + langTranslator.emptyString
+                onClicked: {
+                    stack.pop(mainView);
+                }
+            }
+
+
+    }
+
 }
 
+}
