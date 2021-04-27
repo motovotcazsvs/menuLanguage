@@ -79,7 +79,7 @@ Window {
         id: stack
         initialItem: mainView
         anchors.fill: parent
-/*
+
         delegate: StackViewDelegate { //переход со средины
             pushTransition: StackViewTransition {
                 PropertyAnimation {
@@ -98,7 +98,7 @@ Window {
                 }
             }
         }
-*/
+/*
         delegate: StackViewDelegate {//горизонтальный переход
             function transitionFinished(properties)
             {
@@ -122,6 +122,7 @@ Window {
                 }
             }
         }
+        */
     }
 
     Page {
@@ -292,8 +293,10 @@ Window {
 
                 Image {
                     id: imArrow1
-                    x: 98
-                    y: 68
+                    //x: 98
+                    //y: 68
+                    x: 97
+                    y: 67
                     width: 18
                     height: 28
                     source: "images/МЕНЮ Часы 1 страница маленькая стрелка.png"
@@ -308,18 +311,24 @@ Window {
 
                 Image {
                     id: imArrow2
-                    x: 70
-                    y: 59
-                    width: 36
-                    height: 38
+                    x: 72
+                    y: 60
+                    //x: 70
+                    //y: 59
+                    //width: 36
+                    //height: 38
+                    width: 34
+                    height: 36
 
                     source: "images/МЕНЮ Часы 1 страница большая стрелка.png"
 
                     transform: Rotation {
                         id: minuteRotation
                         angle: (minutes * 6) + 43
-                        origin.x: 31
-                        origin.y: 33
+                        //origin.x: 31
+                        //origin.y: 33
+                        origin.x: 29
+                        origin.y: 31
                     }
                 }
 
@@ -327,8 +336,8 @@ Window {
                     id: recImArrow3
                     color: "#818282"
                     x: 100
-                    y: 53
-                    width: 2
+                    y: 52
+                    width: 1
                     height: 40
                     //radius: 2
 
@@ -343,8 +352,8 @@ Window {
                 Rectangle {
                     //color: "red"
                     color: "transparent"
-                    x: 101
-                    y: 92
+                    x: 100
+                    y: 91
                     z: 1
                     width: 1
                     height: 1
@@ -1221,6 +1230,7 @@ Window {
                     anchors.fill: recB8Rec1
                     onClicked: {
                         console.log("Button 88888 clicked.");
+                        Qt.quit();
                     }
                 }
 
@@ -2163,14 +2173,21 @@ Window {
                 Image {
                     id: imageBackgroundArrow1
                     source: "images/Стрелка часы.png"
+                    //x: 263
+                    //y: 394
                     x: 265
                     y: 406
+                    //width: 62
+                    //height: 97
                     width: 55
                     height: 85
+
 
                     transform: Rotation {
                         id: hourRotationB
                         angle: ((hours * 30) - 30) + (minutes * 0.5)
+                        //origin.x: 13
+                        //origin.y: 85
                         origin.x: 11
                         origin.y: 73
                     }
@@ -2179,16 +2196,23 @@ Window {
                 Image {
                     id: imageBackgroundArrow2
                     source: "images/Стрелка минута.png"
-                    x: 186.5
-                    y: 383.5
-                    width: 103
-                    height: 109
+                    x: 196
+                    y: 394
+                    //x: 201
+                    //y: 399
+                    width: 92
+                    height: 97
+                    //width: 86
+                    //height: 91
+
 
                     transform: Rotation {
                         id: minuteRotationB
                         angle: (minutes * 6) + 43
-                        origin.x: 89.5
-                        origin.y: 95.5
+                        origin.x: 80
+                        origin.y: 85
+                        //origin.x: 75
+                        //origin.y: 80
                     }
 
                 }
@@ -2196,17 +2220,17 @@ Window {
                 Rectangle {
                     id: recBackgroundArrow3
                     color: "white"
-                    x: 273
-                    y: 372
-                    width: 5
-                    height: 110
-                    radius: 5
+                    x: 275
+                    y: 375
+                    width: 2
+                    height: 105
+                    radius: width / 2
 
                     transform: Rotation {
                         id: secondRotationB
                         angle: seconds * 6
-                        origin.x: 3
-                        origin.y: 107
+                        origin.x: 1
+                        origin.y: 104
                     }
                 }
             }
