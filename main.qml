@@ -2316,10 +2316,6 @@ Window {
                     stack.pop(mainView);
                 }
             }
-
-
+        }
     }
-
-}
-
 }
